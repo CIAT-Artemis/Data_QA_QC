@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+.pytest_cache/
+.DS_Store
+
+# run outputs and data: never commit images or embeddings
+qaqc_gist_output/
+qaqc_gist_demo/
+runs/
+*.npz
+*.zip
