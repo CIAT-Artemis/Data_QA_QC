@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qaqc-gist"
+version = "0.1.0"
+description = "QA/QC GIST: quality control and diverse subset selection for image datasets, with DINOv3 embeddings and GIST"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+keywords = ["computer vision", "data curation", "quality control", "diversity", "GIST", "DINOv3", "deduplication", "agriculture"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Image Recognition",
+]
+dependencies = [
+    "numpy>=1.22",
+    "pillow>=9.0",
+    "scikit-learn>=1.0",
+]
+
+[project.optional-dependencies]
+embed = ["torch>=2.1", "timm>=1.0.20"]   # DINOv3 support arrived in timm 1.0.20
+plots = ["matplotlib>=3.5"]
+umap = ["umap-learn>=0.5"]
+demo = ["scikit-image>=0.19"]
+progress = ["tqdm>=4.0"]
+all = ["torch>=2.1", "timm>=1.0.20", "matplotlib>=3.5", "umap-learn>=0.5", "scikit-image>=0.19", "tqdm>=4.0"]
+dev = ["pytest>=7", "scipy>=1.7", "matplotlib>=3.5"]
+
+[project.scripts]
+qaqc-gist = "qaqc_gist.cli:main"
+
+[tool.setuptools]
+packages = ["qaqc_gist"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
